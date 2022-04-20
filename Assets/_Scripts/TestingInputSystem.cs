@@ -21,6 +21,7 @@ public class TestingInputSystem : MonoBehaviour
 
     [Header("Player Actions")]
     [SerializeField] private bool isJumping;
+    [SerializeField] private bool isNearBy;
 
     //Movement Reference
     private Vector2 inputVector = Vector2.zero;
@@ -40,6 +41,9 @@ public class TestingInputSystem : MonoBehaviour
 
     private void Update()
     {
+        if (!TimerManager.Instance.AllowGameInput)
+            return;
+
         // Camera X_Axis rotation
         followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.x * aimSensitivity, Vector3.up);
         followTransform.transform.rotation *= Quaternion.AngleAxis(lookInput.y * aimSensitivity, Vector3.left);
@@ -61,7 +65,6 @@ public class TestingInputSystem : MonoBehaviour
         followTransform.transform.localEulerAngles = angles;
 
         transform.rotation = Quaternion.Euler(0, followTransform.transform.rotation.eulerAngles.y, 0);
-        Debug.Log(followTransform.transform.rotation.eulerAngles.y);
         followTransform.transform.localEulerAngles = new Vector3(angles.x, 0f, 0f);
 
         //
@@ -104,12 +107,34 @@ public class TestingInputSystem : MonoBehaviour
 
     }
 
+    public void OnInteract(InputValue value)
+    {
+        if (!isNearBy) return;
+
+        Debug.Log("!");
+        TimerManager.Instance.gameStarted = true;
+        playerHelmet.SetActive(true);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
             animator.SetBool(isJumpingHash, isJumping);
+        }
+
+        if (collision.gameObject.CompareTag("Gate"))
+        {
+            isNearBy = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Gate"))
+        {
+            isNearBy = false;
         }
     }
 }
