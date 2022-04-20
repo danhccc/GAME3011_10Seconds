@@ -14,6 +14,11 @@ public class TimerManager : MonoBehaviour
     public GameObject GameoverScreen;
     public GameObject PauseMenu;
 
+    [Header("Win/Lose Panel")]
+    public GameObject GameoverPanel;
+    public TextMeshProUGUI Score;
+    public TextMeshProUGUI TimeRemain;
+
     public bool gameStarted;
     public bool AllowGameInput;
     public bool isPause = false;
@@ -58,6 +63,8 @@ public class TimerManager : MonoBehaviour
     {
         AllowGameInput = true;
         timer = maxTime;
+        Time.timeScale = 1.0f;
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
