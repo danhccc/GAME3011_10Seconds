@@ -13,6 +13,7 @@ public class TestingInputSystem : MonoBehaviour
     private PlayerInputData playerInputData;
     public GameObject followTransform;
     public GameObject playerHelmet;
+    public GameObject pauseMenu;
 
     [Header("Player Status")]
     [SerializeField] private float playerSpeed;
@@ -22,6 +23,7 @@ public class TestingInputSystem : MonoBehaviour
     [Header("Player Actions")]
     [SerializeField] private bool isJumping;
     [SerializeField] private bool isNearBy;
+    [SerializeField] private bool isPause = false;
 
     //Movement Reference
     private Vector2 inputVector = Vector2.zero;
@@ -79,8 +81,6 @@ public class TestingInputSystem : MonoBehaviour
         Vector3 movementDirection = moveDirection * (playerSpeed * Time.deltaTime);
 
         transform.position += movementDirection;
-
-        //print(rigidbody.velocity.y);
     }
 
     public void OnMovement(InputValue value)
@@ -96,7 +96,7 @@ public class TestingInputSystem : MonoBehaviour
             return;
 
         isJumping = true;
-        rb.AddForce((transform.up/* + moveDirection*/) * playerJumpForce, ForceMode.Impulse);
+        rb.AddForce((transform.up /*+ moveDirection*/) * playerJumpForce, ForceMode.Impulse);
         animator.SetBool(isJumpingHash, isJumping);
     }
 
@@ -111,9 +111,13 @@ public class TestingInputSystem : MonoBehaviour
     {
         if (!isNearBy) return;
 
-        Debug.Log("!");
         TimerManager.Instance.gameStarted = true;
         playerHelmet.SetActive(true);
+    }
+
+    public void OnPause(InputValue value)
+    {
+        TimerManager.Instance.Pause();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,16 +127,18 @@ public class TestingInputSystem : MonoBehaviour
             isJumping = false;
             animator.SetBool(isJumpingHash, isJumping);
         }
+    }
 
-        if (collision.gameObject.CompareTag("Gate"))
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("StartingGate"))
         {
             isNearBy = true;
         }
     }
-
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        if (collision.gameObject.CompareTag("Gate"))
+        if (other.gameObject.CompareTag("StartingGate"))
         {
             isNearBy = false;
         }

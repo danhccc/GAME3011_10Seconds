@@ -22,7 +22,6 @@ public class GateBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
             animator.SetBool("character_nearby", true);
         }
     }
@@ -31,7 +30,6 @@ public class GateBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
             animator.SetBool("character_nearby", false);
         }
     }

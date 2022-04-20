@@ -9,10 +9,14 @@ public class TimerManager : MonoBehaviour
     public float timer;
 
     public TextMeshProUGUI TimerText;
+    public GameObject onPlayerTimer;
+    public TextMeshPro onPlayerTimerText;
     public GameObject GameoverScreen;
+    public GameObject PauseMenu;
 
     public bool gameStarted;
     public bool AllowGameInput;
+    public bool isPause = false;
 
     private static TimerManager _instance;
     public static TimerManager Instance { get { return _instance; } }
@@ -31,6 +35,8 @@ public class TimerManager : MonoBehaviour
 
     private void Start()
     {
+        onPlayerTimerText = onPlayerTimer.GetComponent<TextMeshPro>();
+
         StartNewGame();
     }
     void Update()
@@ -39,6 +45,8 @@ public class TimerManager : MonoBehaviour
 
         timer -= Time.deltaTime;
         TimerText.text = timer.ToString("F2");
+
+        onPlayerTimerText.text = timer.ToString("F2");
 
         if (timer <= 0)
         {
@@ -64,5 +72,28 @@ public class TimerManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         AllowGameInput = false;
+    }
+
+    public void Pause()
+    {
+        isPause = !isPause;
+
+        if (isPause)
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0.0f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            AllowGameInput = false;
+        }
+        else if (!isPause)
+        {
+            PauseMenu.SetActive(false);
+            Time.timeScale = 1.0f;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            AllowGameInput = true;
+        }
+
     }
 }
