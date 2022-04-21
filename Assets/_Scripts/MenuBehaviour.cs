@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehaviour : MonoBehaviour
 {
-    
+    private int currentlLevelIndex;
+
+    private void Start()
+    {
+        currentlLevelIndex = SceneManager.GetActiveScene().buildIndex;
+    }
 
     public void OnResumePressed()
     {
@@ -14,12 +19,17 @@ public class MenuBehaviour : MonoBehaviour
 
     public void OnMainMenuPressed()
     {
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene(0);
     }
 
     public void OnRetryPressed()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(currentlLevelIndex);
+    }
+
+    public void OnNextLevelPressed()
+    {
+        SceneManager.LoadScene(currentlLevelIndex + 1);
     }
 }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.010485779, g: 0.052983798, b: 0.15318781, a: 1}
+  m_IndirectSpecularColor: {r: 0.010486943, g: 0.05298245, b: 0.15319028, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2218,6 +2218,7 @@ GameObject:
   - component: {fileID: 318800201}
   - component: {fileID: 318800200}
   - component: {fileID: 318800202}
+  - component: {fileID: 318800203}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2361,6 +2362,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &318800203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318800199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7309d4f290ad45f468daaa04bf94e666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 0
+  LevelClearScreen: {fileID: 0}
 --- !u!1 &341529449
 GameObject:
   m_ObjectHideFlags: 0
@@ -19607,6 +19622,7 @@ MonoBehaviour:
   isJumping: 0
   isNearBy: 0
   isPause: 0
+  doortoOpen: {fileID: 0}
 --- !u!114 &5866666021721508418
 MonoBehaviour:
   m_ObjectHideFlags: 0

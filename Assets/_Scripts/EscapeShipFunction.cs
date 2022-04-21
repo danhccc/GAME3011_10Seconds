@@ -20,7 +20,7 @@ public class EscapeShipFunction : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
+            TimerManager.Instance.LevelClear();
         }
     }
 }

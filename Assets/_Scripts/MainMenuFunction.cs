@@ -9,6 +9,12 @@ public class MainMenuFunction : MonoBehaviour
     public GameObject InstructionScreen;
     public GameObject CreditsScreen;
 
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void OnStartPressed()
     {
         SceneManager.LoadScene("GameScene");

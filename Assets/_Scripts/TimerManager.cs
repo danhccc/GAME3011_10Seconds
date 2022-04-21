@@ -19,6 +19,8 @@ public class TimerManager : MonoBehaviour
     public TextMeshProUGUI Score;
     public TextMeshProUGUI TimeRemain;
 
+    public GameObject LevelClearScreen;
+
     public bool gameStarted;
     public bool AllowGameInput;
     public bool isPause = false;
@@ -44,6 +46,7 @@ public class TimerManager : MonoBehaviour
 
         StartNewGame();
     }
+
     void Update()
     {
         if (!gameStarted) return;
@@ -79,6 +82,17 @@ public class TimerManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         AllowGameInput = false;
+    }
+
+    public void LevelClear()
+    {
+        Time.timeScale = 0.0f;
+
+        LevelClearScreen.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        TimerManager.Instance.AllowGameInput = false;
     }
 
     public void Pause()
