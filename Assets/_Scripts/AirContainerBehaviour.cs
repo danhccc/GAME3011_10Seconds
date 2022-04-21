@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,19 @@ using UnityEngine;
 public class AirContainerBehaviour : MonoBehaviour
 {
     public float rotateSpeed;
+
+    private bool isPickedup;
+    private AudioSource audioSource;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
-
+        isPickedup = false;
     }
 
     // Update is called once per frame
@@ -21,8 +31,19 @@ public class AirContainerBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (isPickedup) return;
             TimerManager.Instance.timer += TimerManager.Instance.maxTime;
-            Destroy(gameObject);
+            Debug.Log("Play picked up sound effect");
+            audioSource.Play();
+            //set ispickedup bool here
+            isPickedup = true;
+            StartCoroutine(DestoryItem());
         }
+    }
+
+    IEnumerator DestoryItem()
+    {
+        yield return new WaitForSeconds(.2f);
+        Destroy(gameObject);
     }
 }

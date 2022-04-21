@@ -34,11 +34,20 @@ public class TestingInputSystem : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
 
+
+    [SerializeField]
+    private GameObject doortoOpen;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        doortoOpen = GameObject.Find("starter_door");
+        
     }
 
     private void Update()
@@ -113,6 +122,7 @@ public class TestingInputSystem : MonoBehaviour
 
         TimerManager.Instance.gameStarted = true;
         playerHelmet.SetActive(true);
+        doortoOpen.GetComponent<StartingGateBehaviour>().PlayDoorOpenSoundClip();
     }
 
     public void OnPause(InputValue value)

@@ -8,11 +8,13 @@ public class StartingGateBehaviour : MonoBehaviour
     public GameObject interactUI;
     public GameObject invisibleWall;
     private bool playerNearby;
+    private AudioSource audioSource;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         //invisibleWall = GetComponentInChildren<GameObject>(invisibleWall);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,5 +47,10 @@ public class StartingGateBehaviour : MonoBehaviour
             interactUI.SetActive(false);
             playerNearby = false;
         }
+    }
+
+    public void PlayDoorOpenSoundClip()
+    {
+        audioSource.Play();
     }
 }
