@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.010486943, g: 0.05298245, b: 0.15319028, a: 1}
+  m_IndirectSpecularColor: {r: 0.010485779, g: 0.052983798, b: 0.15318781, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12, y: -141}
-  m_SizeDelta: {x: 500, y: 294.6}
+  m_AnchoredPosition: {x: -12, y: -197}
+  m_SizeDelta: {x: 500, y: 383.1355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &12576928
 MonoBehaviour:
@@ -181,13 +181,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You are escaping from an exploding space station, collect supplies and
-    run for the ship!
+  m_text: 'You have TEN seconds to escape from an exploding space station, collect
+    oxygen and run for the ship!
 
-    
-
-    Each supply container will provide +10 seconds
-    of air and 100 supply points. Watch out for your air meter and plan your escape.'
+    Each oxygen container will provide TEN seconds
+    of air and 100 points. Watch out for your air meter and plan your escape.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9086a62a34a7f144bb4c2bae8320c291, type: 2}
   m_sharedMaterial: {fileID: 4558465464913804206, guid: 9086a62a34a7f144bb4c2bae8320c291, type: 2}
@@ -3370,7 +3368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1668410784
 RectTransform:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class TimerManager : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class TimerManager : MonoBehaviour
     public bool AllowGameInput;
     public bool isPause = false;
 
+    public bool isPlayed = false;
+    //audio 
+    private AudioSource audioSource;
+    
     private static TimerManager _instance;
     public static TimerManager Instance { get { return _instance; } }
 
@@ -50,6 +55,8 @@ public class TimerManager : MonoBehaviour
     {
         onPlayerTimerText = onPlayerTimer.GetComponent<TextMeshPro>();
 
+        audioSource = GetComponent<AudioSource>();
+        
         StartNewGame();
     }
 
@@ -61,7 +68,6 @@ public class TimerManager : MonoBehaviour
         //TimerText.text = timer.ToString("F2");
 
         onPlayerTimerText.text = timer.ToString("F2");
-
         if (timer <= 0)
         {
             Gameover();
