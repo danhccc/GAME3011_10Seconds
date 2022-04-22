@@ -94,6 +94,9 @@ public class TestingInputSystem : MonoBehaviour
 
     public void OnMovement(InputValue value)
     {
+        if (!TimerManager.Instance.AllowGameInput)
+            return;
+
         inputVector = value.Get<Vector2>();
         animator.SetFloat(movementXHash, inputVector.x);
         animator.SetFloat(movementYHash, inputVector.y);
@@ -101,6 +104,9 @@ public class TestingInputSystem : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
+        if (!TimerManager.Instance.AllowGameInput)
+            return;
+
         if (isJumping)
             return;
 
@@ -111,6 +117,9 @@ public class TestingInputSystem : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
+        if (!TimerManager.Instance.AllowGameInput)
+            return;
+
         lookInput = value.Get<Vector2>();
         // If we aim up, down, adjust animations to have a mask that will let us properly animate aim
 

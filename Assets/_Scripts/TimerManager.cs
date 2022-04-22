@@ -5,19 +5,25 @@ using TMPro;
 
 public class TimerManager : MonoBehaviour
 {
+    [Header("Variables")]
     public float maxTime = 10f;
     public float timer;
+    public int supplyPoint;
 
-    public TextMeshProUGUI TimerText;
-    public GameObject onPlayerTimer;
+    [Header("TMPro References")]
+    //public TextMeshProUGUI TimerText;
+    public TextMeshProUGUI supplyPointText;
     public TextMeshPro onPlayerTimerText;
-    public GameObject GameoverScreen;
-    public GameObject PauseMenu;
+    public GameObject onPlayerTimer;
+    public TextMeshProUGUI FinalTime;
+    public TextMeshProUGUI FinalScore;
 
     [Header("Win/Lose Panel")]
-    public GameObject GameoverPanel;
-    public TextMeshProUGUI Score;
-    public TextMeshProUGUI TimeRemain;
+    public GameObject SupplyPointPanal;
+    public GameObject GameoverScreen;
+    public GameObject PauseMenu;
+    //public TextMeshProUGUI Score;
+    //public TextMeshProUGUI TimeRemain;
 
     public GameObject LevelClearScreen;
 
@@ -52,7 +58,7 @@ public class TimerManager : MonoBehaviour
         if (!gameStarted) return;
 
         timer -= Time.deltaTime;
-        TimerText.text = timer.ToString("F2");
+        //TimerText.text = timer.ToString("F2");
 
         onPlayerTimerText.text = timer.ToString("F2");
 
@@ -68,6 +74,8 @@ public class TimerManager : MonoBehaviour
         timer = maxTime;
         Time.timeScale = 1.0f;
 
+        SupplyPointPanal.SetActive(true);
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -77,6 +85,7 @@ public class TimerManager : MonoBehaviour
         timer = 0;
         Time.timeScale = 0.0f;
 
+        SupplyPointPanal.SetActive(false);
         GameoverScreen.SetActive(true);
 
         Cursor.visible = true;
@@ -87,7 +96,9 @@ public class TimerManager : MonoBehaviour
     public void LevelClear()
     {
         Time.timeScale = 0.0f;
-
+        FinalTime.text = "Time Remain: " + timer.ToString("F2");
+        FinalScore.text = "Supply Gather: " + supplyPoint.ToString();
+        SupplyPointPanal.SetActive(false);
         LevelClearScreen.SetActive(true);
 
         Cursor.visible = true;

@@ -33,6 +33,8 @@ public class AirContainerBehaviour : MonoBehaviour
         {
             if (isPickedup) return;
             TimerManager.Instance.timer += TimerManager.Instance.maxTime;
+            TimerManager.Instance.supplyPoint += 100;
+            TimerManager.Instance.supplyPointText.text = TimerManager.Instance.supplyPoint.ToString();
             Debug.Log("Play picked up sound effect");
             audioSource.Play();
             //set ispickedup bool here
