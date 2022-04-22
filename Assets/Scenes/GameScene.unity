@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.010485779, g: 0.052983798, b: 0.15318781, a: 1}
+  m_IndirectSpecularColor: {r: 0.010486943, g: 0.05298245, b: 0.15319028, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 56e450779552cc043a9c9a5eb0047892, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4109,6 +4109,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 434982, guid: 6812e31ceb91fc04da03973c6b1054cd, type: 3}
   m_PrefabInstance: {fileID: 449592838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1438599433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4268913340581611115, guid: ceba0044025a3af49bcf0c9812fa4a32, type: 3}
+  m_PrefabInstance: {fileID: 6568819973211674462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1438599436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438599433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5caf5d2de8ac44490e165b12493281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1453664341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6059,6 +6076,14 @@ PrefabInstance:
     - target: {fileID: 661680464550898852, guid: ceba0044025a3af49bcf0c9812fa4a32, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542179702845431445, guid: ceba0044025a3af49bcf0c9812fa4a32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -550.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478697822670865440, guid: ceba0044025a3af49bcf0c9812fa4a32, type: 3}
+      propertyPath: m_Size.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6568819971857897807, guid: ceba0044025a3af49bcf0c9812fa4a32, type: 3}
       propertyPath: m_IsActive

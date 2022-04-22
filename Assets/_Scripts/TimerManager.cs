@@ -86,7 +86,7 @@ public class TimerManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Gameover()
+    public void Gameover()
     {
         timer = 0;
         Time.timeScale = 0.0f;
